@@ -80,10 +80,12 @@ body.no-scroll {
         transform: translate(0, 0) scale(1);
         opacity: 0.25;
     }
+
     50% {
         transform: translate(40px, -30px) scale(1.15);
         opacity: 0.38;
     }
+
     100% {
         transform: translate(-30px, 35px) scale(0.95);
         opacity: 0.22;
@@ -241,30 +243,34 @@ nav a.active::after {
 }
 
 /* Shimmer Light Sweep on Buttons */
-.btn-primary, .btn-outline, .btn-register {
+.btn-primary,
+.btn-outline,
+.btn-register {
     position: relative;
     overflow: hidden;
 }
 
-.btn-primary::after, .btn-outline::after, .btn-register::after {
+.btn-primary::after,
+.btn-outline::after,
+.btn-register::after {
     content: '';
     position: absolute;
     top: -50%;
     left: -70%;
     width: 45%;
     height: 200%;
-    background: linear-gradient(
-        60deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.3) 50%,
-        rgba(255, 255, 255, 0) 100%
-    );
+    background: linear-gradient(60deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%);
     transform: rotate(25deg);
     transition: left 0.7s var(--ease-out-expo);
     pointer-events: none;
 }
 
-.btn-primary:hover::after, .btn-outline:hover::after, .btn-register:hover::after {
+.btn-primary:hover::after,
+.btn-outline:hover::after,
+.btn-register:hover::after {
     left: 135%;
 }
 
@@ -359,11 +365,25 @@ nav a.active::after {
     opacity: 1;
 }
 
-.mobile-drawer.open .mobile-nav-links a:nth-child(1) { transition-delay: 0.08s; }
-.mobile-drawer.open .mobile-nav-links a:nth-child(2) { transition-delay: 0.14s; }
-.mobile-drawer.open .mobile-nav-links a:nth-child(3) { transition-delay: 0.20s; }
-.mobile-drawer.open .mobile-nav-links a:nth-child(4) { transition-delay: 0.26s; }
-.mobile-drawer.open .mobile-nav-links a:nth-child(5) { transition-delay: 0.32s; }
+.mobile-drawer.open .mobile-nav-links a:nth-child(1) {
+    transition-delay: 0.08s;
+}
+
+.mobile-drawer.open .mobile-nav-links a:nth-child(2) {
+    transition-delay: 0.14s;
+}
+
+.mobile-drawer.open .mobile-nav-links a:nth-child(3) {
+    transition-delay: 0.20s;
+}
+
+.mobile-drawer.open .mobile-nav-links a:nth-child(4) {
+    transition-delay: 0.26s;
+}
+
+.mobile-drawer.open .mobile-nav-links a:nth-child(5) {
+    transition-delay: 0.32s;
+}
 
 .mobile-drawer .btn-register {
     transform: translateY(20px);
@@ -471,7 +491,7 @@ nav a.active::after {
     opacity: 1;
 }
 
-.stat-card > * {
+.stat-card>* {
     position: relative;
     z-index: 1;
 }
@@ -531,9 +551,12 @@ nav a.active::after {
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px) rotate(0deg);
     }
+
     50% {
         transform: translateY(-14px) rotate(1.2deg);
     }
@@ -631,10 +654,13 @@ nav a.active::after {
 }
 
 @keyframes starPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1) rotate(0deg);
         opacity: 0.8;
     }
+
     50% {
         transform: scale(1.3) rotate(45deg);
         opacity: 1;
@@ -645,6 +671,7 @@ nav a.active::after {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
     }
@@ -925,7 +952,7 @@ nav a.active::after {
     opacity: 1;
 }
 
-.testimonial-card > * {
+.testimonial-card>* {
     position: relative;
     z-index: 1;
 }
@@ -1208,10 +1235,21 @@ nav a.active::after {
     transform: translate(0, 0) scale(1);
 }
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-3 {
+    transition-delay: 0.3s;
+}
+
+.delay-4 {
+    transition-delay: 0.4s;
+}
 
 /* ==========================================================================
    Responsive Breakpoints
@@ -1276,6 +1314,7 @@ nav a.active::after {
 
 /* Tablets (max-width: 900px) */
 @media (max-width: 900px) {
+
     /* Switch to mobile hamburger nav */
     nav,
     .header-action {

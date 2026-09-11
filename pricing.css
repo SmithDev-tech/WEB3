@@ -79,10 +79,12 @@ body.no-scroll {
         transform: translate(0, 0) scale(1);
         opacity: 0.25;
     }
+
     50% {
         transform: translate(40px, -30px) scale(1.15);
         opacity: 0.38;
     }
+
     100% {
         transform: translate(-30px, 35px) scale(0.95);
         opacity: 0.22;
@@ -232,30 +234,31 @@ nav a.active::after {
 }
 
 /* Shimmer Light Sweep on Buttons */
-.btn-plan, .btn-register {
+.btn-plan,
+.btn-register {
     position: relative;
     overflow: hidden;
 }
 
-.btn-plan::after, .btn-register::after {
+.btn-plan::after,
+.btn-register::after {
     content: '';
     position: absolute;
     top: -50%;
     left: -70%;
     width: 45%;
     height: 200%;
-    background: linear-gradient(
-        60deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.3) 50%,
-        rgba(255, 255, 255, 0) 100%
-    );
+    background: linear-gradient(60deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%);
     transform: rotate(25deg);
     transition: left 0.7s var(--ease-out-expo);
     pointer-events: none;
 }
 
-.btn-plan:hover::after, .btn-register:hover::after {
+.btn-plan:hover::after,
+.btn-register:hover::after {
     left: 135%;
 }
 
@@ -350,11 +353,25 @@ nav a.active::after {
     opacity: 1;
 }
 
-.mobile-drawer.open .mobile-nav-links a:nth-child(1) { transition-delay: 0.08s; }
-.mobile-drawer.open .mobile-nav-links a:nth-child(2) { transition-delay: 0.14s; }
-.mobile-drawer.open .mobile-nav-links a:nth-child(3) { transition-delay: 0.20s; }
-.mobile-drawer.open .mobile-nav-links a:nth-child(4) { transition-delay: 0.26s; }
-.mobile-drawer.open .mobile-nav-links a:nth-child(5) { transition-delay: 0.32s; }
+.mobile-drawer.open .mobile-nav-links a:nth-child(1) {
+    transition-delay: 0.08s;
+}
+
+.mobile-drawer.open .mobile-nav-links a:nth-child(2) {
+    transition-delay: 0.14s;
+}
+
+.mobile-drawer.open .mobile-nav-links a:nth-child(3) {
+    transition-delay: 0.20s;
+}
+
+.mobile-drawer.open .mobile-nav-links a:nth-child(4) {
+    transition-delay: 0.26s;
+}
+
+.mobile-drawer.open .mobile-nav-links a:nth-child(5) {
+    transition-delay: 0.32s;
+}
 
 .mobile-drawer .btn-register {
     transform: translateY(20px);
@@ -432,9 +449,12 @@ nav a.active::after {
 }
 
 @keyframes pulseDiscount {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 0 0 rgba(255, 94, 54, 0.4);
     }
+
     50% {
         box-shadow: 0 0 12px 2px rgba(255, 94, 54, 0.25);
     }
@@ -476,13 +496,13 @@ nav a.active::after {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.switch input:checked + .slider {
+.switch input:checked+.slider {
     background: var(--accent-orange);
     border-color: var(--accent-orange);
     box-shadow: 0 0 12px rgba(255, 94, 54, 0.5);
 }
 
-.switch input:checked + .slider::before {
+.switch input:checked+.slider::before {
     transform: translateX(22px);
 }
 
@@ -510,7 +530,8 @@ nav a.active::after {
     white-space: nowrap;
     position: relative;
     z-index: 1;
-    margin-bottom: -55px; /* Overlaps behind top part of glass cards */
+    margin-bottom: -55px;
+    /* Overlaps behind top part of glass cards */
     text-shadow: 0 0 45px rgba(255, 255, 255, 0.3);
     transition: transform 0.6s var(--ease-out-expo);
 }
@@ -539,7 +560,7 @@ nav a.active::after {
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .card::before {
@@ -562,7 +583,7 @@ nav a.active::after {
     opacity: 1;
 }
 
-.card > * {
+.card>* {
     position: relative;
     z-index: 1;
 }
@@ -599,6 +620,7 @@ nav a.active::after {
     padding: 5px 16px;
     border-radius: 30px;
     box-shadow: 0 4px 15px rgba(255, 94, 54, 0.4);
+    z-index: 100;
 }
 
 .plan-name {
@@ -767,14 +789,37 @@ nav a.active::after {
     transform: translateY(-4px) scale(1.08);
 }
 
-.social-icon.fb { background: #3b5998; }
-.social-icon.fb:hover { box-shadow: 0 4px 15px rgba(59, 89, 152, 0.5); }
-.social-icon.tw { background: #1da1f2; }
-.social-icon.tw:hover { box-shadow: 0 4px 15px rgba(29, 161, 242, 0.5); }
-.social-icon.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-.social-icon.ig:hover { box-shadow: 0 4px 15px rgba(220, 39, 67, 0.5); }
-.social-icon.yt { background: #ff0000; }
-.social-icon.yt:hover { box-shadow: 0 4px 15px rgba(255, 0, 0, 0.5); }
+.social-icon.fb {
+    background: #3b5998;
+}
+
+.social-icon.fb:hover {
+    box-shadow: 0 4px 15px rgba(59, 89, 152, 0.5);
+}
+
+.social-icon.tw {
+    background: #1da1f2;
+}
+
+.social-icon.tw:hover {
+    box-shadow: 0 4px 15px rgba(29, 161, 242, 0.5);
+}
+
+.social-icon.ig {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-icon.ig:hover {
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.5);
+}
+
+.social-icon.yt {
+    background: #ff0000;
+}
+
+.social-icon.yt:hover {
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.5);
+}
 
 .footer-heading {
     font-family: var(--font-heading);
@@ -861,9 +906,17 @@ nav a.active::after {
     transform: translate(0, 0) scale(1);
 }
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-3 {
+    transition-delay: 0.3s;
+}
 
 /* ==========================================================================
    Responsive Breakpoints
@@ -901,6 +954,7 @@ nav a.active::after {
 }
 
 @media (max-width: 900px) {
+
     nav,
     .header-action {
         display: none;
