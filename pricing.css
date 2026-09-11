@@ -1,3 +1,8 @@
+/* ==========================================================================
+   WE03 - Pricing Page Stylesheet
+   Responsive Glassmorphic Pricing Stage, Dynamic Toggles, & Animations
+   ========================================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +18,12 @@
     --accent-orange: #ff5e36;
     --accent-pink: #ff2a70;
     --accent-yellow: #ffb703;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -22,9 +33,22 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-/* ---------- ambient background blobs (matches homepage) ---------- */
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    touch-action: none;
+}
+
+/* ==========================================================================
+   Ambient Background Blobs (Pulsing / Floating)
+   ========================================================================== */
 .ambient-light {
     position: absolute;
     width: 600px;
@@ -34,6 +58,7 @@ body {
     pointer-events: none;
     z-index: 0;
     opacity: 0.28;
+    animation: ambientFloat 14s ease-in-out infinite alternate;
 }
 
 .light-left {
@@ -46,12 +71,31 @@ body {
     top: 15%;
     right: -180px;
     background: radial-gradient(circle, #f77f00 0%, #d62828 100%);
+    animation-delay: -7s;
 }
 
-/* ---------- header / nav (identical to homepage) ---------- */
+@keyframes ambientFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.25;
+    }
+    50% {
+        transform: translate(40px, -30px) scale(1.15);
+        opacity: 0.38;
+    }
+    100% {
+        transform: translate(-30px, 35px) scale(0.95);
+        opacity: 0.22;
+    }
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
 header {
-    position: relative;
-    z-index: 10;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,6 +103,15 @@ header {
     max-width: 1400px;
     margin: 0 auto;
     width: 100%;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease, padding 0.3s ease;
+}
+
+header.scrolled {
+    background: rgba(8, 9, 11, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1rem 4rem;
 }
 
 .brand-name {
@@ -70,16 +123,28 @@ header {
     letter-spacing: -0.5px;
     display: inline-flex;
     align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.brand-name:hover {
+    transform: scale(1.03);
 }
 
 .brand-highlight {
     color: var(--accent-orange);
     border: 1.5px solid var(--accent-orange);
-    padding: 1px 4px;
+    padding: 1px 5px;
     border-radius: 4px;
-    margin-left: 2px;
+    margin-left: 3px;
     font-size: 1.2rem;
     line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.brand-name:hover .brand-highlight {
+    background: var(--accent-orange);
+    color: #08090b;
+    box-shadow: 0 0 12px rgba(255, 94, 54, 0.6);
 }
 
 nav {
@@ -96,12 +161,36 @@ nav a {
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+    position: relative;
+    padding-bottom: 4px;
     transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange));
+    transition: width 0.3s var(--ease-out-expo);
+    border-radius: 2px;
 }
 
 nav a:hover,
 nav a.active {
     color: #ffffff;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+.header-action {
+    display: flex;
+    align-items: center;
 }
 
 .btn-register {
@@ -112,68 +201,250 @@ nav a.active {
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: opacity 0.3s ease;
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .btn-register:hover {
-    opacity: 0.8;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
 .btn-register .arrow {
-    margin-left: 4px;
     font-size: 0.95rem;
+    transition: transform 0.3s ease;
 }
 
-/* ---------- pricing stage: word behind cards ---------- */
+.btn-register:hover .arrow {
+    transform: translate(2px, -2px);
+}
+
+/* Shimmer Light Sweep on Buttons */
+.btn-plan, .btn-register {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-plan::after, .btn-register::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -70%;
+    width: 45%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(25deg);
+    transition: left 0.7s var(--ease-out-expo);
+    pointer-events: none;
+}
+
+.btn-plan:hover::after, .btn-register:hover::after {
+    left: 135%;
+}
+
+/* Hamburger Menu Button (Mobile) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2.5px;
+    background: #ffffff;
+    border-radius: 4px;
+    transition: all 0.35s var(--ease-out-expo);
+    transform-origin: left center;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(2px, -1px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(2px, 1px);
+}
+
+/* Mobile Drawer Overlay */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(8, 9, 11, 0.96);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.35s var(--ease-out-expo), visibility 0.35s;
+}
+
+.mobile-drawer.open {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.mobile-nav-links a {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: color 0.3s ease, transform 0.4s var(--ease-out-expo), opacity 0.4s;
+}
+
+.mobile-drawer.open .mobile-nav-links a {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mobile-drawer.open .mobile-nav-links a:nth-child(1) { transition-delay: 0.08s; }
+.mobile-drawer.open .mobile-nav-links a:nth-child(2) { transition-delay: 0.14s; }
+.mobile-drawer.open .mobile-nav-links a:nth-child(3) { transition-delay: 0.20s; }
+.mobile-drawer.open .mobile-nav-links a:nth-child(4) { transition-delay: 0.26s; }
+.mobile-drawer.open .mobile-nav-links a:nth-child(5) { transition-delay: 0.32s; }
+
+.mobile-drawer .btn-register {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.4s var(--ease-out-expo), opacity 0.4s;
+    transition-delay: 0.38s;
+}
+
+.mobile-drawer.open .btn-register {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mobile-nav-links a:hover,
+.mobile-nav-links a.active {
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Pricing Stage & Word Behind Cards
+   ========================================================================== */
 .pricing-stage {
     position: relative;
     z-index: 5;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 1rem 4rem 6rem 4rem;
+    padding: 2rem 4rem 6rem 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
-.bg-word {
-    position: absolute;
-    top: 12%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: clamp(70px, 14vw, 190px);
-    letter-spacing: -3px;
-    color: #ffffff;
-    user-select: none;
-    pointer-events: none;
-    white-space: nowrap;
-}
-
-/* ---------- billing toggle ---------- */
-.pricing-toggle {
+/* ==========================================================================
+   Billing Toggle Bar
+   ========================================================================== */
+.pricing-toggle-bar {
     position: relative;
-    z-index: 2;
+    z-index: 10;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-top: 220px;
-    margin-bottom: 3rem;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 2.2rem;
 }
 
 .toggle-label {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.toggle-label.active {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.discount-badge {
+    background: rgba(255, 94, 54, 0.15);
+    border: 1px solid rgba(255, 94, 54, 0.4);
+    color: var(--accent-orange);
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    animation: pulseDiscount 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseDiscount {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 94, 54, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 12px 2px rgba(255, 94, 54, 0.25);
+    }
 }
 
 .switch {
     position: relative;
     display: inline-block;
-    width: 46px;
-    height: 24px;
+    width: 48px;
+    height: 26px;
 }
 
 .switch input {
@@ -187,9 +458,9 @@ nav a.active {
     cursor: pointer;
     inset: 0;
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 24px;
-    transition: 0.3s;
+    transition: 0.3s var(--ease-out-expo);
 }
 
 .slider::before {
@@ -197,53 +468,120 @@ nav a.active {
     position: absolute;
     width: 18px;
     height: 18px;
-    left: 2px;
-    top: 2px;
+    left: 3px;
+    top: 3px;
     background: #fff;
     border-radius: 50%;
-    transition: 0.3s;
+    transition: 0.3s var(--ease-out-expo);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.switch input:checked+.slider {
+.switch input:checked + .slider {
     background: var(--accent-orange);
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 12px rgba(255, 94, 54, 0.5);
 }
 
-.switch input:checked+.slider::before {
+.switch input:checked + .slider::before {
     transform: translateX(22px);
 }
 
-/* ---------- cards: the "glass over text" effect ---------- */
+/* ==========================================================================
+   Pricing Hero Zone & Frosted Glass Typography
+   ========================================================================== */
+.pricing-hero-wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bg-word {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(75px, 15vw, 195px);
+    letter-spacing: -3px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.85;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+    margin-bottom: -55px; /* Overlaps behind top part of glass cards */
+    text-shadow: 0 0 45px rgba(255, 255, 255, 0.3);
+    transition: transform 0.6s var(--ease-out-expo);
+}
+
+/* ==========================================================================
+   Pricing Cards: Frosted Glass Layout
+   ========================================================================== */
 .cards {
     position: relative;
     z-index: 2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 2rem;
     width: 100%;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.025);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 2rem 1.8rem;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    background: rgba(14, 15, 19, 0.72);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2.5rem 2.2rem;
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+    transition: transform 0.4s var(--ease-out-expo), border-color 0.4s ease, box-shadow 0.4s ease;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: var(--mouse-y, -150px);
+    left: var(--mouse-x, -150px);
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(255, 94, 54, 0.16) 0%, rgba(255, 42, 112, 0.05) 40%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 255, 255, 0.08);
 }
 
 .card.featured {
-    position: relative;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1.5px solid rgba(255, 94, 54, 0.35);
+    background: rgba(20, 22, 28, 0.76);
+    border: 1.5px solid rgba(255, 94, 54, 0.5);
+    box-shadow: 0 14px 45px rgba(255, 94, 54, 0.15), 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+}
+
+.card.featured:hover {
+    border-color: var(--accent-orange);
+    box-shadow: 0 20px 55px rgba(255, 94, 54, 0.28), 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
 .featured-badge {
@@ -256,29 +594,36 @@ nav a.active {
     font-family: var(--font-heading);
     font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
-    padding: 5px 14px;
+    padding: 5px 16px;
     border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(255, 94, 54, 0.4);
 }
 
 .plan-name {
     font-family: var(--font-heading);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-text-muted);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.8rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.9rem;
 }
 
 .price {
     font-family: var(--font-heading);
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.8rem;
     line-height: 1;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.price.price-changing {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.96);
 }
 
 .price span {
@@ -291,18 +636,18 @@ nav a.active {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
-    margin-bottom: 2rem;
+    gap: 1rem;
+    margin-bottom: 2.2rem;
     flex-grow: 1;
 }
 
 .features li {
     display: flex;
     align-items: flex-start;
-    gap: 0.7rem;
-    font-size: 0.85rem;
+    gap: 0.8rem;
+    font-size: 0.88rem;
     color: #cbd5e1;
-    line-height: 1.4;
+    line-height: 1.45;
 }
 
 .check-icon {
@@ -318,20 +663,20 @@ nav a.active {
     color: #ffffff;
     font-size: 0.65rem;
     font-weight: 700;
-    margin-top: 1px;
+    margin-top: 2px;
 }
 
 .btn-plan {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.85rem 1.5rem;
+    padding: 0.9rem 1.8rem;
     border-radius: 50px;
     text-decoration: none;
     font-family: var(--font-heading);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
     background: rgba(255, 255, 255, 0.08);
     color: #ffffff;
@@ -340,50 +685,315 @@ nav a.active {
 }
 
 .btn-plan:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.18);
     transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .btn-plan.primary {
     background: #ffffff;
     color: #0c0d0f;
     border: none;
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.18);
 }
 
 .btn-plan.primary:hover {
     background: #f1f5f9;
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
 }
 
+/* ==========================================================================
+   Site Footer
+   ========================================================================== */
+.site-footer {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    background: #060708;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 4rem 4rem 2rem 4rem;
+    margin-top: auto;
+}
 
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 4rem;
+    margin-bottom: 3.5rem;
+}
 
-/* ---------- responsive ---------- */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.brand-col .brand-name {
+    margin-bottom: 1.5rem;
+}
+
+.footer-description {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #94a3b8;
+    max-width: 380px;
+    margin-bottom: 1.8rem;
+    text-align: left;
+}
+
+.social-links {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-4px) scale(1.08);
+}
+
+.social-icon.fb { background: #3b5998; }
+.social-icon.fb:hover { box-shadow: 0 4px 15px rgba(59, 89, 152, 0.5); }
+.social-icon.tw { background: #1da1f2; }
+.social-icon.tw:hover { box-shadow: 0 4px 15px rgba(29, 161, 242, 0.5); }
+.social-icon.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-icon.ig:hover { box-shadow: 0 4px 15px rgba(220, 39, 67, 0.5); }
+.social-icon.yt { background: #ff0000; }
+.social-icon.yt:hover { box-shadow: 0 4px 15px rgba(255, 0, 0, 0.5); }
+
+.footer-heading {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.8rem;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 0;
+    text-align: left;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+.contact-info {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    padding: 0;
+    text-align: left;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.contact-icon {
+    font-size: 1rem;
+    color: #ff5e36;
+}
+
+.footer-bottom {
+    max-width: 1300px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 2rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Scroll Reveal Animation Classes
+   ========================================================================== */
+.reveal-fade-up {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+    will-change: opacity, transform;
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+    will-change: opacity, transform;
+}
+
+.reveal-fade-up.revealed,
+.reveal-scale.revealed {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
 @media (max-width: 1024px) {
+    header {
+        padding: 1.25rem 2rem;
+    }
+
+    header.scrolled {
+        padding: 1rem 2rem;
+    }
+
+    .pricing-stage {
+        padding: 2rem 2rem 5rem 2rem;
+    }
+
     .cards {
         grid-template-columns: 1fr;
-        max-width: 420px;
+        max-width: 480px;
+        margin: 0 auto;
+        gap: 2.2rem;
     }
 
     .bg-word {
-        font-size: clamp(60px, 20vw, 120px);
+        font-size: clamp(56px, 16vw, 120px);
+        margin-bottom: -32px;
+    }
+
+    .site-footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (max-width: 900px) {
+    nav,
+    .header-action {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 }
 
 @media (max-width: 768px) {
     header {
-        padding: 1.5rem 2rem;
-        flex-direction: column;
-        gap: 1.5rem;
+        padding: 1.2rem 1.5rem;
     }
 
-    nav {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+    header.scrolled {
+        padding: 0.9rem 1.5rem;
     }
 
     .pricing-stage {
-        padding: 1rem 1.5rem 4rem 1.5rem;
+        padding: 1.2rem 1.5rem 4rem 1.5rem;
+    }
+
+    .pricing-toggle-bar {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .bg-word {
+        font-size: clamp(48px, 17vw, 90px);
+        margin-bottom: -24px;
+    }
+
+    .site-footer {
+        padding: 3.5rem 1.5rem 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1rem 1.2rem;
+    }
+
+    header.scrolled {
+        padding: 0.8rem 1.2rem;
+    }
+
+    .brand-name {
+        font-size: 1.4rem;
+    }
+
+    .pricing-stage {
+        padding: 1rem 1.2rem 3rem 1.2rem;
+    }
+
+    .card {
+        padding: 2rem 1.4rem;
+        border-radius: 20px;
+    }
+
+    .price {
+        font-size: 2.2rem;
+    }
+
+    .btn-plan {
+        width: 100%;
+        padding: 0.85rem 1.5rem;
+    }
+
+    .site-footer {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }
+
+    .ambient-light {
+        width: 320px;
+        height: 320px;
+        filter: blur(80px);
+    }
+}
+
+@media (max-width: 360px) {
+    .pricing-toggle-bar {
+        font-size: 0.8rem;
+    }
+
+    .price {
+        font-size: 1.9rem;
     }
 }

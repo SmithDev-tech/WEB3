@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WE03 - Pricing</title>
+    <title>WE03 - Transparent Pricing</title>
+    <meta name="description" content="Transparent pricing plans for decentralized product design, tokenomics interfaces, NFT collections, and Web3 strategy.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,96 +18,140 @@
     <div class="ambient-light light-left"></div>
     <div class="ambient-light light-right"></div>
 
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+        <div class="mobile-nav-links">
+            <a href="index.html">PRODUCTS</a>
+            <a href="index.html#services">SOLUTIONS</a>
+            <a href="index.html#testimonials">CUSTOMER</a>
+            <a href="pricing.html" class="active">PRICING</a>
+            <a href="#contact">RESOURCES</a>
+        </div>
+        <a href="#plans" class="btn-register">CHOOSE PLAN <span class="arrow">↓</span></a>
+    </div>
+
     <header>
         <div class="brand">
             <a href="index.html" class="brand-name">WE<span class="brand-highlight">03</span></a>
         </div>
         <nav>
-            <a href="#">PRODUCTS</a>
-            <a href="#">SOLUTIONS</a>
-            <a href="#">CUSTOMER</a>
+            <a href="index.html">PRODUCTS</a>
+            <a href="index.html#services">SOLUTIONS</a>
+            <a href="index.html#testimonials">CUSTOMER</a>
             <a href="pricing.html" class="active">PRICING</a>
-            <a href="#">RESOURCES</a>
+            <a href="#contact">RESOURCES</a>
         </nav>
         <div class="header-action">
-            <a href="#" class="btn-register">REGISTER NOW <span class="arrow">↗</span></a>
+            <a href="#plans" class="btn-register">CHOOSE PLAN <span class="arrow">↓</span></a>
         </div>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-drawer">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
-    <main class="pricing-stage">
-        <h1 class="bg-word">Pricing</h1>
-
-        <div class="pricing-toggle">
-            <span class="toggle-label">Billed Monthly</span>
+    <main class="pricing-stage" id="plans">
+        <div class="pricing-toggle-bar reveal-fade-up">
+            <span class="toggle-label monthly-label active">Billed Monthly</span>
             <label class="switch">
-                <input type="checkbox" id="billing-toggle">
+                <input type="checkbox" id="billing-toggle" aria-label="Toggle Monthly and Yearly Billing">
                 <span class="slider"></span>
             </label>
-            <span class="toggle-label">Billed Yearly</span>
+            <span class="toggle-label yearly-label">
+                Billed Yearly
+                <span class="discount-badge">Save 20%</span>
+            </span>
         </div>
 
-        <div class="cards">
-            <div class="card">
-                <div class="plan-name">Free plan</div>
-                <div class="price">Free</div>
-                <ul class="features">
-                    <li><span class="check-icon">✓</span> Send up to 2 transfers per month</li>
-                    <li><span class="check-icon">✓</span> Basic transaction history</li>
-                    <li><span class="check-icon">✓</span> Email support</li>
-                    <li><span class="check-icon">✓</span> Limited currency support (USD, EUR, GBP)</li>
-                    <li><span class="check-icon">✓</span> Basic security features</li>
-                </ul>
-                <a href="#" class="btn-plan">Get started</a>
-            </div>
+        <div class="pricing-hero-wrap">
+            <h1 class="bg-word reveal-scale">Pricing</h1>
 
-            <div class="card featured">
-                <div class="featured-badge">Most popular</div>
-                <div class="plan-name">Standard plan</div>
-                <div class="price">$9.99<span>/m</span></div>
-                <ul class="features">
-                    <li><span class="check-icon">✓</span> Unlimited transfers</li>
-                    <li><span class="check-icon">✓</span> Transaction history with export options</li>
-                    <li><span class="check-icon">✓</span> Priority email support</li>
-                    <li><span class="check-icon">✓</span> Expanded currency support</li>
-                    <li><span class="check-icon">✓</span> Advanced security features</li>
-                </ul>
-                <a href="#" class="btn-plan primary">Get started</a>
-            </div>
+            <div class="cards">
+                <div class="card reveal-fade-up delay-1">
+                    <div class="plan-name">Free plan</div>
+                    <div class="price" data-monthly="Free" data-yearly="Free">Free</div>
+                    <ul class="features">
+                        <li><span class="check-icon">✓</span> Send up to 2 transfers per month</li>
+                        <li><span class="check-icon">✓</span> Basic transaction history</li>
+                        <li><span class="check-icon">✓</span> Email support</li>
+                        <li><span class="check-icon">✓</span> Limited currency support (USD, EUR, GBP)</li>
+                        <li><span class="check-icon">✓</span> Basic security features</li>
+                    </ul>
+                    <a href="#" class="btn-plan">Get started</a>
+                </div>
 
-            <div class="card">
-                <div class="plan-name">Pro plan</div>
-                <div class="price">$19.99<span>/m</span></div>
-                <ul class="features">
-                    <li><span class="check-icon">✓</span> Unlimited transfers with priority processing</li>
-                    <li><span class="check-icon">✓</span> Comprehensive transaction analytics</li>
-                    <li><span class="check-icon">✓</span> 24/7 priority support</li>
-                    <li><span class="check-icon">✓</span> Full currency support</li>
-                    <li><span class="check-icon">✓</span> Enhanced security features</li>
-                </ul>
-                <a href="#" class="btn-plan">Get started</a>
+                <div class="card featured reveal-fade-up delay-2">
+                    <div class="featured-badge">Most popular</div>
+                    <div class="plan-name">Standard plan</div>
+                    <div class="price" data-monthly="9.99" data-yearly="7.99">$9.99<span>/m</span></div>
+                    <ul class="features">
+                        <li><span class="check-icon">✓</span> Unlimited transfers</li>
+                        <li><span class="check-icon">✓</span> Transaction history with export options</li>
+                        <li><span class="check-icon">✓</span> Priority email support</li>
+                        <li><span class="check-icon">✓</span> Expanded currency support</li>
+                        <li><span class="check-icon">✓</span> Advanced security features</li>
+                    </ul>
+                    <a href="#" class="btn-plan primary">Get started</a>
+                </div>
+
+                <div class="card reveal-fade-up delay-3">
+                    <div class="plan-name">Pro plan</div>
+                    <div class="price" data-monthly="19.99" data-yearly="15.99">$19.99<span>/m</span></div>
+                    <ul class="features">
+                        <li><span class="check-icon">✓</span> Unlimited transfers with priority processing</li>
+                        <li><span class="check-icon">✓</span> Comprehensive transaction analytics</li>
+                        <li><span class="check-icon">✓</span> 24/7 priority support</li>
+                        <li><span class="check-icon">✓</span> Full currency support</li>
+                        <li><span class="check-icon">✓</span> Enhanced security features</li>
+                    </ul>
+                    <a href="#" class="btn-plan">Get started</a>
+                </div>
             </div>
         </div>
-
     </main>
 
-    <script>
-        const toggle = document.getElementById('billing-toggle');
-        const prices = document.querySelectorAll('.price');
-        // Example monthly/yearly figures — swap for real ones
-        const monthly = ['Free', '9.99', '19.99'];
-        const yearly = ['Free', '7.99', '15.99'];
+    <footer id="contact" class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <a href="index.html" class="brand-name">WE<span class="brand-highlight">03</span></a>
+                <p class="footer-description">
+                    Cryptocurrency is a type of virtual currency that uses cryptography to secure transactions that are
+                    digitally recorded on a distributed ledger, such as a blockchain.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon fb" aria-label="Facebook">f</a>
+                    <a href="#" class="social-icon tw" aria-label="Twitter">t</a>
+                    <a href="#" class="social-icon ig" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-icon yt" aria-label="YouTube">▶</a>
+                </div>
+            </div>
 
-        toggle.addEventListener('change', () => {
-            const set = toggle.checked ? yearly : monthly;
-            prices.forEach((el, i) => {
-                if (set[i] === 'Free') {
-                    el.innerHTML = 'Free';
-                } else {
-                    el.innerHTML = `$${set[i]}<span>/m</span>`;
-                }
-            });
-        });
-    </script>
+            <div class="footer-col links-col">
+                <h4 class="footer-heading">Useful Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#services">Our Services</a></li>
+                    <li><a href="index.html#testimonials">Customer Reviews</a></li>
+                    <li><a href="pricing.html">Pricing Plans</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact-col">
+                <h4 class="footer-heading">Contact Us</h4>
+                <ul class="contact-info">
+                    <li><span class="contact-icon">📞</span> +91 8347412540</li>
+                    <li><span class="contact-icon">✉</span> nisharmultani007@gmail.com</li>
+                    <li><span class="contact-icon">🏠</span> Elgin St. Celina, Delaware 10299</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>All Right Reserved © nishar 2022</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
 </body>
 
 </html>

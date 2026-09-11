@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WE03 - Web3 Design Agency</title>
+    <meta name="description" content="WE03 is an elite Web3 Design Agency crafting high-performance decentralized interfaces, NFT art, dashboards, and digital experiences.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,52 +18,68 @@
     <div class="ambient-light light-left"></div>
     <div class="ambient-light light-right"></div>
 
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+        <div class="mobile-nav-links">
+            <a href="index.html" class="active">PRODUCTS</a>
+            <a href="#services">SOLUTIONS</a>
+            <a href="#testimonials">CUSTOMER</a>
+            <a href="pricing.html">PRICING</a>
+            <a href="#contact">RESOURCES</a>
+        </div>
+        <a href="pricing.html" class="btn-register">REGISTER NOW <span class="arrow">↗</span></a>
+    </div>
+
     <div class="hero-viewport">
         <header>
             <div class="brand">
                 <a href="index.html" class="brand-name">WE<span class="brand-highlight">03</span></a>
             </div>
             <nav>
-                <a href="#">PRODUCTS</a>
-                <a href="#">SOLUTIONS</a>
-                <a href="#">CUSTOMER</a>
+                <a href="index.html" class="active">PRODUCTS</a>
+                <a href="#services">SOLUTIONS</a>
+                <a href="#testimonials">CUSTOMER</a>
                 <a href="pricing.html">PRICING</a>
-                <a href="#">RESOURCES</a>
+                <a href="#contact">RESOURCES</a>
             </nav>
             <div class="header-action">
-                <a href="#" class="btn-register">REGISTER NOW <span class="arrow">↗</span></a>
+                <a href="pricing.html" class="btn-register">REGISTER NOW <span class="arrow">↗</span></a>
             </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-drawer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </header>
 
         <main class="hero-container">
-            <h1 class="hero-title">
+            <h1 class="hero-title reveal-fade-up">
                 <span class="title-white">Web3 Design</span><br>
                 <span class="title-gradient">Agency.</span>
             </h1>
 
             <section class="hero-content">
-                <div class="hero-left">
+                <div class="hero-left reveal-fade-right">
                     <div class="stat-card">
-                        <h2 class="stat-number">240+</h2>
+                        <h2 class="stat-number" data-counter="240" data-suffix="+">240+</h2>
                         <p class="stat-label">PARTNERS</p>
                     </div>
                     <div class="stat-card">
-                        <h2 class="stat-number">92%</h2>
+                        <h2 class="stat-number" data-counter="92" data-suffix="%">92%</h2>
                         <p class="stat-label">FASTER TECHNOLOGY</p>
                     </div>
                 </div>
 
-                <div class="hero-middle">
+                <div class="hero-middle reveal-scale">
                     <div class="image-wrapper">
                         <img src="centre_f.png" alt="3D Web3 Artwork" class="hero-art">
                     </div>
                 </div>
 
-                <div class="hero-right">
+                <div class="hero-right reveal-fade-left">
                     <p class="hero-description">
                         Better data leads to more performance models. Performant models lead to faster deployment.
                     </p>
-                    <a href="#" class="btn-primary">GET STARTED</a>
+                    <a href="pricing.html" class="btn-primary">GET STARTED</a>
                 </div>
             </section>
         </main>
@@ -89,10 +106,10 @@
         </div>
     </div>
 
-    <section class="our-services-section">
-        <h2 class="section-title">Our Services</h2>
+    <section id="services" class="our-services-section">
+        <h2 class="section-title reveal-fade-up">Our Services</h2>
         <div class="service-card-container">
-            <div class="service-info-col">
+            <div class="service-info-col reveal-fade-right">
                 <h3 class="service-heading">UI/UX Design</h3>
                 <p class="service-description">
                     Hands-on learning via real-life innovation projects. Save hours of your time and get better result.
@@ -103,9 +120,9 @@
                     <li><span class="check-icon">✓</span> User Experience Design</li>
                     <li><span class="check-icon">✓</span> Mobile Application design</li>
                 </ul>
-                <a href="#" class="btn-outline">LEARN MORE <span class="arrow">↗</span></a>
+                <a href="pricing.html" class="btn-outline">LEARN MORE <span class="arrow">↗</span></a>
             </div>
-            <div class="service-media-col">
+            <div class="service-media-col reveal-fade-left">
                 <img src="uiux.jpg" alt="UI/UX Design" class="service-image">
             </div>
         </div>
@@ -113,30 +130,29 @@
 
     <section class="stats-banner-section">
         <div class="stats-banner-container">
-            <div class="stat-banner-item">
-                <h3 class="stat-banner-number">5M+</h3>
+            <div class="stat-banner-item reveal-fade-up delay-1">
+                <h3 class="stat-banner-number" data-counter="5" data-suffix="M+">5M+</h3>
                 <p class="stat-banner-label">Customer</p>
             </div>
-            <div class="stat-banner-item">
-                <h3 class="stat-banner-number">450M+</h3>
+            <div class="stat-banner-item reveal-fade-up delay-2">
+                <h3 class="stat-banner-number" data-counter="450" data-suffix="M+">450M+</h3>
                 <p class="stat-banner-label">Coverage</p>
             </div>
-            <div class="stat-banner-item">
-                <h3 class="stat-banner-number">22%</h3>
+            <div class="stat-banner-item reveal-fade-up delay-3">
+                <h3 class="stat-banner-number" data-counter="22" data-suffix="%">22%</h3>
                 <p class="stat-banner-label">Earning</p>
             </div>
-            <div class="stat-banner-item">
-                <h3 class="stat-banner-number">8.03%</h3>
+            <div class="stat-banner-item reveal-fade-up delay-4">
+                <h3 class="stat-banner-number" data-counter="8.03" data-suffix="%">8.03%</h3>
                 <p class="stat-banner-label">Interest</p>
             </div>
         </div>
     </section>
 
-
-    <section class="testimonials-section">
-        <h2 class="section-title">Our happy Customers</h2>
+    <section id="testimonials" class="testimonials-section">
+        <h2 class="section-title reveal-fade-up">Our happy Customers</h2>
         <div class="testimonials-grid">
-            <div class="testimonial-card">
+            <div class="testimonial-card reveal-fade-up delay-1">
                 <div class="avatar-badge">
                     <div class="avatar-img">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -157,7 +173,7 @@
                 </div>
             </div>
 
-            <div class="testimonial-card">
+            <div class="testimonial-card reveal-fade-up delay-2">
                 <div class="avatar-badge">
                     <div class="avatar-img">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -178,7 +194,7 @@
                 </div>
             </div>
 
-            <div class="testimonial-card">
+            <div class="testimonial-card reveal-fade-up delay-3">
                 <div class="avatar-badge">
                     <div class="avatar-img">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -198,13 +214,12 @@
                 </div>
             </div>
         </div>
-
     </section>
 
-    <footer class="site-footer">
+    <footer id="contact" class="site-footer">
         <div class="footer-container">
             <div class="footer-col brand-col">
-                <a href="#" class="brand-name">WE<span class="brand-highlight">03</span></a>
+                <a href="index.html" class="brand-name">WE<span class="brand-highlight">03</span></a>
                 <p class="footer-description">
                     Cryptocurrency is a type of virtual currency that uses cryptography to secure transactions that are
                     digitally recorded on a distributed ledger, such as a blockchain.
@@ -218,12 +233,12 @@
             </div>
 
             <div class="footer-col links-col">
-                <h4 class="footer-heading">Usefull Link</h4>
+                <h4 class="footer-heading">Useful Links</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Ios apps</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Terms & Condition</a></li>
-                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#testimonials">Customer Reviews</a></li>
+                    <li><a href="pricing.html">Pricing Plans</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -241,6 +256,8 @@
             <p>All Right Reserved © nishar 2022</p>
         </div>
     </footer>
+
+    <script src="app.js"></script>
 </body>
 
 </html>
