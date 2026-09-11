@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Gate Group - Security You Can Trust. Vehicles You Can Depend On.</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Epilogue:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing page.css">
+</head>
+
+<body>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="landing page.html" class="brand-logo">
+                <div class="logo-graphic">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#F3C267" />
+                                <stop offset="50%" stop-color="#E5A93B" />
+                                <stop offset="100%" stop-color="#BA0814" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M50 10 C25 10 10 25 10 50 C10 75 25 90 50 90 C70 90 85 75 88 58 L68 58 C66 66 59 72 50 72 C38 72 28 62 28 50 C28 38 38 28 50 28 C60 28 68 35 70 44 L50 44 L50 58 L89 58 C90 55 90 52 90 50 C90 25 75 10 50 10 Z" fill="url(#goldGradient)"/>
+                    </svg>
+                </div>
+                <div class="brand-text-container">
+                    <span class="brand-title">GOLDEN GATE</span>
+                    <span class="brand-subtitle">GROUP</span>
+                </div>
+            </a>
+
+            <nav class="main-nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#security" class="nav-link">Security</a>
+                <a href="#rental" class="nav-link">Car Rental</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <a href="tel:+233000000000" class="btn-call">
+                <span>Giive Us A Call</span>
+                <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="19" x2="19" y2="5"></line>
+                    <polyline points="12 5 19 5 19 12"></polyline>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-bg-overlay"></div>
+
+        <div class="container hero-grid">
+            <!-- Hero Content Left -->
+            <div class="hero-content">
+                <div class="hero-tagline">
+                    PROTECTION. RELIABILITY. PEACE OF MIND.
+                </div>
+
+                <h1 class="hero-headline">
+                    <span class="headline-line bold">Security You</span>
+                    <span class="headline-line bold">Can Trust.</span>
+                    <span class="headline-line serif">Vehicles You</span>
+                    <span class="headline-line serif">Can Depend</span>
+                    <span class="headline-line serif">On.</span>
+                </h1>
+
+                <div class="hero-actions">
+                    <a href="#security" class="btn-glass-primary">
+                        <span>Hire Security</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#rental" class="btn-glass-secondary">
+                        Rent a Vehicle
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Clients Served</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Monitoring</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual Right (Fleet + Radar HUD) -->
+            <div class="hero-visual-wrapper">
+                <!-- Concentric Radar HUD Graphic -->
+                <div class="radar-hud-container">
+                    <div class="radar-target-dot"></div>
+                    <svg class="radar-svg" viewBox="0 0 500 500">
+                        <!-- Radar Circles -->
+                        <circle cx="250" cy="250" r="80" class="radar-ring" />
+                        <circle cx="250" cy="250" r="140" class="radar-ring radar-ring-main" />
+                        <circle cx="250" cy="250" r="200" class="radar-ring" />
+                        <circle cx="250" cy="250" r="240" class="radar-ring" />
+                        
+                        <!-- Radar Axes -->
+                        <line x1="250" y1="10" x2="250" y2="490" stroke="rgba(230,57,70,0.2)" stroke-dasharray="2,4" />
+                        <line x1="10" y1="250" x2="490" y2="250" stroke="rgba(230,57,70,0.2)" stroke-dasharray="2,4" />
+
+                        <!-- Radar Labels -->
+                        <text x="255" y="165" class="radar-label">50m</text>
+                        <text x="255" y="105" class="radar-label">100m</text>
+                        <text x="255" y="45" class="radar-label">150m</text>
+
+                        <!-- Animated Sweep Line -->
+                        <g class="radar-sweep-line">
+                            <line x1="250" y1="250" x2="250" y2="10" stroke="rgba(230,57,70,0.6)" stroke-width="2" />
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Luxury Security Fleet Visual -->
+                <img src="hero_fleet.png" alt="Golden Gate Group Security Vehicles Fleet" class="fleet-graphic">
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUSTED BY ORGANISATIONS BAR -->
+    <section class="trust-section">
+        <div class="container">
+            <h3 class="trust-title">TRUSTED BY ORGANISATIONS THAT COUNT ON US</h3>
+            <div class="trust-logos">
+                <span class="logo-item logo-gcb">GCB</span>
+                <span class="logo-item logo-mtn">MTN</span>
+                <span class="logo-item logo-tullow">Tullow</span>
+                <span class="logo-item logo-calbank">CalBank</span>
+                <span class="logo-item logo-movenpick">Mövenpick</span>
+                <span class="logo-item logo-fidelity">Fidelity Bank</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR SERVICES SECTION -->
+    <section class="services-section" id="security">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">OUR SERVICES</span>
+                <h2 class="section-title">How can we help you today?</h2>
+                <p class="section-description">
+                    From a single residence to a multi-site organisation — we design security around your exact needs.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <div class="service-image-wrapper">
+                        <img src="centre.jpg" alt="Home Security" class="service-img">
+                        <span class="service-badge">Residential</span>
+                    </div>
+                    <div class="service-body">
+                        <h3 class="service-card-title">Home Security</h3>
+                        <p class="service-card-text">
+                            Comprehensive protection for your home — CCTV, alarm systems, access control, and trained guards for estates and private residences.
+                        </p>
+                        <a href="#" class="service-link">
+                            Protect Your Home <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <div class="service-image-wrapper">
+                        <img src="centre1.jpg" alt="Organisation Security" class="service-img">
+                        <span class="service-badge">Commercial</span>
+                    </div>
+                    <div class="service-body">
+                        <h3 class="service-card-title">Organisation Security</h3>
+                        <p class="service-card-text">
+                            Tailored corporate security for offices, banks, warehouses, events, and multi-site facilities of any scale.
+                        </p>
+                        <a href="#" class="service-link">
+                            Secure Your Business <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card" id="rental">
+                    <div class="service-image-wrapper">
+                        <img src="hero_fleet.png" alt="Security Vehicles Fleet Rental" class="service-img fit-contain">
+                        <span class="service-badge">Car Rental</span>
+                    </div>
+                    <div class="service-body">
+                        <h3 class="service-card-title">Security & Luxury Vehicles</h3>
+                        <p class="service-card-text">
+                            Chauffeur-driven luxury security vehicles, SUV escorts, and armored transport for diplomatic, corporate, and private VIP missions.
+                        </p>
+                        <a href="#" class="service-link">
+                            Reserve a Fleet <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="why-us-section" id="about">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">OUR STRENGTHS</span>
+                <h2 class="section-title">Why choose us?</h2>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E5A93B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="why-card-title">Rapid Response</h3>
+                    <p class="why-card-text">
+                        24/7 dedicated dispatch command center monitoring all units in real-time with under 5-minute local response dispatch.
+                    </p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E5A93B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="8.5" cy="7" r="4"/>
+                            <polyline points="17 11 19 13 23 9"/>
+                        </svg>
+                    </div>
+                    <h3 class="why-card-title">Certified Personnel</h3>
+                    <p class="why-card-text">
+                        Rigorously background-vetted, tactics-trained security personnel and professional tactical drivers.
+                    </p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E5A93B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3 class="why-card-title">Advanced Surveillance</h3>
+                    <p class="why-card-text">
+                        Smart AI motion tracking, remote perimeter monitoring, and high-definition mobile telemetry systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="contact">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="#" class="brand-logo">
+                    <div class="logo-graphic">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 10 C25 10 10 25 10 50 C10 75 25 90 50 90 C70 90 85 75 88 58 L68 58 C66 66 59 72 50 72 C38 72 28 62 28 50 C28 38 38 28 50 28 C60 28 68 35 70 44 L50 44 L50 58 L89 58 C90 55 90 52 90 50 C90 25 75 10 50 10 Z" fill="url(#goldGradient)"/>
+                        </svg>
+                    </div>
+                    <div class="brand-text-container">
+                        <span class="brand-title">GOLDEN GATE</span>
+                        <span class="brand-subtitle">GROUP</span>
+                    </div>
+                </a>
+                <p class="footer-summary">
+                    Premier Security & Logistics Management. Protecting assets, residences, and providing executive vehicle fleets across Ghana.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Navigation</h4>
+                    <a href="#home">Home</a>
+                    <a href="#security">Security</a>
+                    <a href="#rental">Car Rental</a>
+                    <a href="#about">About</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Contact</h4>
+                    <p>Accra, Ghana</p>
+                    <p>info@goldengategroup.com</p>
+                    <p>+233 (0) 30 200 0000</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Golden Gate Group. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
